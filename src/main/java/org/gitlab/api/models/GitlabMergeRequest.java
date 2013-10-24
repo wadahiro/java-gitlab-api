@@ -6,6 +6,7 @@ public class GitlabMergeRequest {
     public static final String URL = "/merge_requests";
 
     private Integer _id;
+    private Integer _iid;
     private String _title;
     private String _state;
     private boolean _closed;
@@ -19,8 +20,11 @@ public class GitlabMergeRequest {
     @JsonProperty("source_branch")
     private String _sourceBranch;
 
-    @JsonProperty("project_id")
-    private Integer _projectId;
+    @JsonProperty("target_project_id")
+    private Integer _targetProjectId;
+
+    @JsonProperty("source_project_id")
+    private Integer _sourceProjectId;
 
     public Integer getId() {
         return _id;
@@ -28,6 +32,14 @@ public class GitlabMergeRequest {
 
     public void setId(Integer id) {
         _id = id;
+    }
+    
+    public Integer getIid() {
+        return _iid;
+    }
+    
+    public void setIid(Integer iid) {
+        _iid = iid;
     }
 
     public String getTargetBranch() {
@@ -46,13 +58,22 @@ public class GitlabMergeRequest {
         _sourceBranch = sourceBranch;
     }
 
-    public Integer getProjectId() {
-        return _projectId;
+    public Integer getTargetProjectId() {
+        return _targetProjectId;
     }
 
-    public void setProjectId(Integer projectId) {
-        _projectId = projectId;
+    public void setTargetProjectId(Integer projectId) {
+        _targetProjectId = projectId;
     }
+
+    public Integer getSourceProjectId() {
+        return _sourceProjectId;
+    }
+
+    public void setSourceProjectId(Integer projectId) {
+        _sourceProjectId = projectId;
+    }
+
 
     public String getTitle() {
         return _title;

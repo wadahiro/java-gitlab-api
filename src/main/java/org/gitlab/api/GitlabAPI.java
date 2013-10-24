@@ -145,7 +145,7 @@ public class GitlabAPI {
     }
 
     public List<GitlabNote> getNotes(GitlabMergeRequest mergeRequest) throws IOException {
-        String tailUrl = GitlabProject.URL + "/" + mergeRequest.getProjectId() +
+        String tailUrl = GitlabProject.URL + "/" + mergeRequest.getTargetProjectId() +
                 GitlabMergeRequest.URL + "/" + mergeRequest.getId() +
                 GitlabNote.URL;
 
@@ -154,7 +154,7 @@ public class GitlabAPI {
     }
 
     public List<GitlabNote> getAllNotes(GitlabMergeRequest mergeRequest) throws IOException {
-        String tailUrl = GitlabProject.URL + "/" + mergeRequest.getProjectId() +
+        String tailUrl = GitlabProject.URL + "/" + mergeRequest.getTargetProjectId() +
                 GitlabMergeRequest.URL + "/" + mergeRequest.getId() +
                 GitlabNote.URL;
 
@@ -174,7 +174,7 @@ public class GitlabAPI {
     }
 
     public List<GitlabCommit> getCommits(GitlabMergeRequest mergeRequest) throws IOException {
-        String tailUrl = GitlabProject.URL + "/" + mergeRequest.getProjectId() +
+        String tailUrl = GitlabProject.URL + "/" + mergeRequest.getTargetProjectId() +
                 "/repository" + GitlabCommit.URL + "?ref_name=" + mergeRequest.getSourceBranch();
 
         GitlabCommit[] commits = retrieve().to(tailUrl, GitlabCommit[].class);
@@ -182,7 +182,7 @@ public class GitlabAPI {
     }
 
     public GitlabNote createNote(GitlabMergeRequest mergeRequest, String body) throws IOException {
-        String tailUrl = GitlabProject.URL + "/" + mergeRequest.getProjectId() +
+        String tailUrl = GitlabProject.URL + "/" + mergeRequest.getTargetProjectId() +
                 GitlabMergeRequest.URL + "/" + mergeRequest.getId() + GitlabNote.URL;
 
         return dispatch().with("body", body).to(tailUrl, GitlabNote.class);
